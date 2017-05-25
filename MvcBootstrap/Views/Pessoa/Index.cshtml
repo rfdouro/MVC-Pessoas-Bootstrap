@@ -1,0 +1,29 @@
+﻿@using MvcBootstrap.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Pessoa> lista = (List<Pessoa>)Model;
+}
+
+<h2>Index de Pessoa</h2>
+
+@Html.ActionLink("Cadastro", "Create", "Pessoa", null, new {@class = "btn btn-primary"})
+
+<br />
+
+<table class="table table-stripped" style="width: 90%">
+	<thead>
+		<tr><td style="width:75%">Nome</td><td>Ações</td></tr>
+	</thead>
+	<tbody>
+		@foreach(Pessoa p in lista){
+			<tr><td>@p.nome</td><td>
+				<a class="btn btn-warning" href="Pessoa/Edit/@p.id">Alterar</a>&nbsp;
+				<a class="btn btn-danger" href="Pessoa/Delete?id=@p.id">Excluir</a>
+			</td></tr>
+		}
+	</tbody>
+</table>
+
+
